@@ -15,14 +15,46 @@ Else
 6.	Return 0
  
 Program:
+~~~
+#include <stdio.h>
 
-//type your code here
+struct eligible
+{
+    int age;
+    char n[50];
+};
+
+int main()
+{
+    struct eligible e;
+
+    printf("Enter the age: ");
+    scanf("%d", &e.age);
+
+    printf("Enter the name: ");
+    scanf("%s", e.n);
+
+    if (e.age <= 6)
+        printf("Vaccine Eligibility: No\n");
+    else
+        printf("Vaccine Eligibility: Yes\n");
+
+    printf("Age: %d\n", e.age);
+    printf("Name: %s\n", e.n);
+
+    return 0;
+}
+~~~
 
 
 Output:
-
-//paste your output here
-
+~~~
+Enter the age: 18
+Enter the name: Yuva
+Vaccine Eligibility: Yes
+Age: 18
+Name: Yuva
+~~~
 
 Result:
 Thus, the program is verified successfully. 
@@ -43,19 +75,41 @@ Algorithm:
 7.	Return 0
  
 Program:
+~~~
+#include <stdio.h>
 
-//type your code here
+struct numbers
+{
+    int a;
+    int b;
+};
 
+struct numbers add(struct numbers n)
+{
+    n.a = n.a + n.b;
+    return n;
+}
 
+int main()
+{
+    struct numbers n;
 
+    printf("Enter values of a and b: ");
+    scanf("%d %d", &n.a, &n.b);
+
+    n = add(n);
+
+    printf("Result = %d", n.a);
+
+    return 0;
+}
+~~~
 
 Output:
-
-
-//paste your output here
-
-
-
+~~~
+Enter values of a and b: 10 20
+Result = 30
+~~~
 
 Result:
 Thus, the program is verified successfully
@@ -85,25 +139,44 @@ Use scanf to input the file name into the name array.
 5.	Return 0 to indicate successful program execution.
  
 Program:
+~~~
+#include <stdio.h>
 
-//type your code here
+int main()
+{
+    FILE *p;
+    char name[50];
 
+    printf("Enter the file name: ");
+    scanf("%s", name);
 
+    p = fopen(name, "w");
+
+    if (p == NULL)
+    {
+        printf("File creation failed");
+        return 1;
+    }
+
+    printf("%s created successfully\n", name);
+    printf("File opened successfully\n");
+
+    fclose(p);
+
+    printf("File closed successfully\n");
+
+    return 0;
+}
+~~~
 
 
 Output:
-
-
-//paste your output here
-
-
-
-
-
-
-
-
-
+~~~
+Enter the file name: Sample.txt
+Sample.txt created successfully
+File opened successfully
+File closed successfully
+~~~
 
 
 Result:
@@ -132,20 +205,57 @@ Use scanf to input the file name into the name array and the number of strings i
 5.	Return 0 to indicate successful program execution.
  
 Program:
+~~~
+#include <stdio.h>
 
-//type your code here
+int main()
+{
+    FILE *p;
+    char name[50], text[100];
+    int num, i;
 
+    printf("Enter the file name: ");
+    scanf("%s", name);
 
+    printf("Enter the number of strings: ");
+    scanf("%d", &num);
 
+    p = fopen(name, "w");
+
+    if (p == NULL)
+    {
+        printf("File opening failed");
+        return 1;
+    }
+
+    printf("%s Opened\n", name);
+
+    for (i = 0; i < num; i++)
+    {
+        printf("Enter string %d: ", i + 1);
+        scanf("%s", text);
+        fputs(text, p);
+        fputs("\n", p);
+    }
+
+    fclose(p);
+
+    printf("Data added Successfully");
+
+    return 0;
+}
+~~~
 
 Output:
-
-
-//paste your output here
-
-
-
-
+~~~
+Enter the file name: Sample.txt
+Enter the number of strings: 3
+Sample.txt Opened
+Enter string 1: 10.55
+Enter string 2: 11.66
+Enter string 3: 12.77
+Data added Successfully
+~~~
 
 
 Result:
@@ -186,20 +296,75 @@ Algorithm:
 13.End the program by returning 0.
 
 Program:
+~~~
+#include <stdio.h>
+#include <stdlib.h>
 
-//type your code here
+struct student
+{
+    char name[50];
+    int marks;
+};
 
+int main()
+{
+    struct student *s;
+    int n, i;
 
+    printf("Enter the number of subjects: ");
+    scanf("%d", &n);
+
+    s = (struct student *)malloc(n * sizeof(struct student));
+
+    if (s == NULL)
+    {
+        printf("Memory allocation failed");
+        return 1;
+    }
+
+    for (i = 0; i < n; i++)
+    {
+        printf("Enter subject name: ");
+        scanf("%s", s[i].name);
+
+        printf("Enter marks: ");
+        scanf("%d", &s[i].marks);
+    }
+
+    printf("\nStudent Details:\n");
+
+    for (i = 0; i < n; i++)
+    {
+        printf("Subject: %s\n", s[i].name);
+        printf("Marks: %d\n", s[i].marks);
+    }
+
+    free(s);
+
+    return 0;
+}
+~~~
 
 
 Output:
+~~~
+Enter the number of subjects: 3
 
+Enter subject name: Maths
+Enter marks: 90
+Enter subject name: Physics
+Enter marks: 85
+Enter subject name: Chemistry
+Enter marks: 88
 
-//paste your output here
-
-
-
-
+Student Details:
+Subject: Maths
+Marks: 90
+Subject: Physics
+Marks: 85
+Subject: Chemistry
+Marks: 88
+~~~
 
 
 Result:
