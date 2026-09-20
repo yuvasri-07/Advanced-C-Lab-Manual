@@ -15,21 +15,67 @@ Algorithm:
 4.	Exit the program.
  
 Program:
+~~~
+#include <stdio.h>
 
-//type your code here
+int main()
+{
+    int n;
 
+    printf("Enter a number: ");
+    scanf("%d", &n);
 
+    switch(n)
+    {
+        case 71:
+            printf("seventy one");
+            break;
 
+        case 72:
+            printf("seventy two");
+            break;
+
+        case 73:
+            printf("seventy three");
+            break;
+
+        case 74:
+            printf("seventy four");
+            break;
+
+        case 75:
+            printf("seventy five");
+            break;
+
+        case 76:
+            printf("seventy six");
+            break;
+
+        case 77:
+            printf("seventy seven");
+            break;
+
+        case 78:
+            printf("seventy eight");
+            break;
+
+        case 79:
+            printf("seventy nine");
+            break;
+
+        default:
+            printf("Greater than 79");
+    }
+
+    return 0;
+}
+~~~
 
 Output:
-
-
-//paste your output here
-
-
-
-
-
+~~~
+Enter a number: 75
+seventy five
+~~~
 
 Result:
 Thus, the program is verified successfully
@@ -46,21 +92,39 @@ Algorithm:
 6.	End
  
 Program:
+~~~
+#include <stdio.h>
 
-//type your code here
+int main()
+{
+    char a[50];
+    int i, c;
 
+    printf("Enter ten space-separated integers: ");
+    scanf("%s", a);
 
+    for (i = 0; i < 4; i++)
+    {
+        c = 0;
 
+        for (int j = 0; a[j] != '\0'; j++)
+        {
+            if (a[j] == i + '0')
+                c++;
+        }
+
+        printf("%d ", c);
+    }
+
+    return 0;
+}
+~~~
 
 Output:
-
-
-//paste your output here
-
-
-
-
-
+~~~
+Enter ten space-separated integers: 1 2 3 0 1 2 3 1 0 3
+3 3 3 3
+~~~
 
 Result:
 Thus, the program is verified successfully
@@ -83,21 +147,61 @@ Free the memory allocated for each string in s Free the memory allocated for s
 7.	End
  
 Program:
+~~~
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-//type your code here
+void swap(char *a, char *b)
+{
+    char t;
+    t = *a;
+    *a = *b;
+    *b = t;
+}
 
+void permute(char str[], int l, int r)
+{
+    int i;
 
+    if (l == r)
+    {
+        printf("%s\n", str);
+    }
+    else
+    {
+        for (i = l; i <= r; i++)
+        {
+            swap(&str[l], &str[i]);
+            permute(str, l + 1, r);
+            swap(&str[l], &str[i]);
+        }
+    }
+}
 
+int main()
+{
+    char str[20];
+
+    printf("Enter a string: ");
+    scanf("%s", str);
+
+    permute(str, 0, strlen(str) - 1);
+
+    return 0;
+}
+~~~
 
 Output:
-
-
-//paste your output here
-
-
-
-
-
+~~~
+Enter a string: ABC
+ABC
+ACB
+BAC
+BCA
+CAB
+CBA
+~~~
 
 Result:
 Thus, the program is verified successfully
@@ -116,21 +220,54 @@ Algorithm:
 7.	End
  
 Program:
+~~~
+#include <stdio.h>
 
-//type your code here
+int main()
+{
+    int n, i, j, min, len;
 
+    printf("Enter n: ");
+    scanf("%d", &n);
 
+    len = n * 2 - 1;
 
+    for (i = 0; i < len; i++)
+    {
+        for (j = 0; j < len; j++)
+        {
+            min = i;
+
+            if (j < min)
+                min = j;
+
+            if (len - 1 - i < min)
+                min = len - 1 - i;
+
+            if (len - 1 - j < min)
+                min = len - 1 - j;
+
+            printf("%d ", n - min);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+~~~
 
 Output:
-
-
-//paste your output here
-
-
-
-
-
+~~~
+Enter n: 4
+4 4 4 4 4 4 4
+4 3 3 3 3 3 4
+4 3 2 2 2 3 4
+4 3 2 1 2 3 4
+4 3 2 2 2 3 4
+4 3 3 3 3 3 4
+4 4 4 4 4 4 4
+~~~
 
 Result:
 Thus, the program is verified successfully
@@ -155,21 +292,36 @@ o	Call the square() function and display the result.
 5.	End.
 
 Program:
+~~~
+#include <stdio.h>
 
-//type your code here
+int square()
+{
+    int n;
 
+    printf("Enter a number: ");
+    scanf("%d", &n);
 
+    return n * n;
+}
 
+int main()
+{
+    int result;
+
+    result = square();
+
+    printf("Square = %d", result);
+
+    return 0;
+}
+~~~
 
 Output:
-
-
-//paste your output here
-
-
-
-
-
+~~~
+Enter a number: 5
+Square = 25
+~~~
 
 Result:
 Thus, the program is verified successfully
